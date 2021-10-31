@@ -2,30 +2,50 @@ package com.crowdar.examples.steps;
 
 import com.crowdar.core.PageSteps;
 import com.crowdar.core.actions.MobileActionManager;
+import com.crowdar.core.actions.WebActionManager;
 import com.crowdar.examples.constants.HomeConstants;
+import com.crowdar.examples.constants.SettingsConstants;
+import com.crowdar.examples.services.AddTimeService;
 import com.crowdar.examples.services.HomeService;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.appium.java_client.MobileElement;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
+import org.testng.Assert;
 
-/**
- * This class handles the steps in the features files and connects with the service in case of having business logic.
- * Otherwise, if it is a simple action, like clicking a button and it has nothing related to business logic, is correct to put here.
- */
+import java.util.List;
+
+
 public class HomeSteps extends PageSteps {
-
-    @Then("Home page is displayed")
+//Este es para ver si estoy en el login de la app
+    @Then("Home page is correct")
     public void isHomePageVisible() {
         HomeService.isViewLoaded();
     }
 
-    @When("The user changes the language")
-    public void doChangeLanguage() {
-        MobileActionManager.click(HomeConstants.CHANGE_LANGUAGE_BUTTON_LOCATOR);
-    }
 
-    @When("The user log out of the app")
+    @Then("The user log out of the app")
     public void doSignOut() {
-        MobileActionManager.click(HomeConstants.SIGN_OUT_BUTTON_LOCATOR);
+        HomeService.logOut();
+
+
     }
 
+    @When("the user go to menu")
+    public void theUserGoToMenu() {
+        AddTimeService.tapMenu();
+
+    }
+
+    @And("change to dark mode")
+    public void changeToDarkTheme() {
+        HomeService.settingsMode();
+        HomeService.changeDarkTheme();
+    }
+
+    @io.cucumber.java.en.Then("confirm dark mode is enabled")
+    public void confirmDarkModeIsEnabled() {
+        HomeService.darkModeStatus();
+
+    }
 }
