@@ -19,7 +19,7 @@ public class HomeService {
     }
 
     public static void logOut() {
-        MobileActionManager.click(HomeConstants.OPEN_NAVIGATION_DRAWER);
+
         MobileActionManager.click(HomeConstants.SIGN_OUT_BUTTON_LOCATOR);
         MobileActionManager.click(HomeConstants.CONFIRM_SIGN_OUT_BUTON);
     }

@@ -7,6 +7,7 @@ import com.crowdar.examples.constants.HomeConstants;
 import com.crowdar.examples.constants.SettingsConstants;
 import com.crowdar.examples.services.AddTimeService;
 import com.crowdar.examples.services.HomeService;
+import com.crowdar.examples.services.LoginService;
 import cucumber.api.java.en.Then;
 import io.appium.java_client.MobileElement;
 import io.cucumber.java.en.And;
@@ -26,6 +27,7 @@ public class HomeSteps extends PageSteps {
 
     @Then("The user log out of the app")
     public void doSignOut() {
+        AddTimeService.tapMenu();
         HomeService.logOut();
 
 
