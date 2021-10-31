@@ -46,6 +46,7 @@ public class HomeSteps extends PageSteps {
     @io.cucumber.java.en.Then("confirm dark mode is enabled")
     public void confirmDarkModeIsEnabled() {
         HomeService.darkModeStatus();
+        Assert.assertEquals(HomeService.darkModeStatus(), "ON");
 
     }
 }

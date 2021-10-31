@@ -30,8 +30,10 @@ public class HomeService {
 
     }
 
-    public static boolean darkModeStatus() {
+    public static String darkModeStatus() {
 
-        return true;
+        String result = MobileActionManager.getText(SettingsConstants.SETTINGS_DARK_MODE_BUTON);
+        return result;
     }
+
 }
